@@ -694,6 +694,9 @@ int lgw_txgain_setconf(struct lgw_tx_gain_lut_s *conf) {
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 int lgw_start(void) {
+
+    MSG("INFO: [main] DRACAENA TEST started, packet can now be received\n");
+    printf("DRACAENA TEST  \n");
     int i, err;
     int reg_stat;
     unsigned x;
@@ -706,6 +709,8 @@ int lgw_start(void) {
     uint8_t cal_status;
 
     uint64_t fsk_sync_word_reg;
+ 
+    MSG("INFO: [main] DRACAENA TEST started, packet can now be received\n");
 
     if (lgw_is_started == true) {
         DEBUG_MSG("Note: LoRa concentrator already started, restarting it now\n");
