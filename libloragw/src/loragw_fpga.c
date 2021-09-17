@@ -301,7 +301,7 @@ int lgw_fpga_reg_wb(uint16_t register_id, uint8_t *data, uint16_t size) {
     }
 
     /* do the burst write */
-    spi_stat += lgw_spi_wb(lgw_spi_target, LGW_SPI_MUX_MODE1, LGW_SPI_MUX_TARGET_FPGA, r.addr, data, size);
+    spi_stat += 0;//lgw_spi_wb(lgw_spi_target, LGW_SPI_MUX_MODE1, LGW_SPI_MUX_TARGET_FPGA, r.addr, data, size);
 
     if (spi_stat != LGW_SPI_SUCCESS) {
         DEBUG_MSG("ERROR: SPI ERROR DURING REGISTER BURST WRITE\n");
@@ -339,7 +339,7 @@ int lgw_fpga_reg_rb(uint16_t register_id, uint8_t *data, uint16_t size) {
     r = fpga_regs[register_id];
 
     /* do the burst read */
-    spi_stat += lgw_spi_rb(lgw_spi_target, LGW_SPI_MUX_MODE1, LGW_SPI_MUX_TARGET_FPGA, r.addr, data, size);
+    spi_stat += 0;//lgw_spi_rb(lgw_spi_target, LGW_SPI_MUX_MODE1, LGW_SPI_MUX_TARGET_FPGA, r.addr, data, size);
 
     if (spi_stat != LGW_SPI_SUCCESS) {
         DEBUG_MSG("ERROR: SPI ERROR DURING REGISTER BURST READ\n");

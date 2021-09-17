@@ -61,7 +61,7 @@ int lgw_spi_close(void *com_target);
 @param data data byte to write
 @return status of register operation (LGW_SPI_SUCCESS/LGW_SPI_ERROR)
 */
-int lgw_spi_w(void *com_target, uint8_t spi_mux_target, uint16_t address, uint8_t data);
+//int lgw_spi_w(void *com_target, uint8_t spi_mux_target, uint16_t address, uint8_t data);
 
 /**
 @brief LoRa concentrator SPI single-byte read
@@ -70,7 +70,7 @@ int lgw_spi_w(void *com_target, uint8_t spi_mux_target, uint16_t address, uint8_
 @param data data byte to write
 @return status of register operation (LGW_SPI_SUCCESS/LGW_SPI_ERROR)
 */
-int lgw_spi_r(void *com_target, uint8_t spi_mux_target, uint16_t address, uint8_t *data);
+//int lgw_spi_r(void *com_target, uint8_t spi_mux_target, uint16_t address, uint8_t *data);
 
 /**
 @brief LoRa concentrator SPI single-byte read-modify-write
@@ -91,7 +91,7 @@ int lgw_spi_rmw(void *com_target, uint8_t spi_mux_target, uint16_t address, uint
 @param size size of the transfer, in byte(s)
 @return status of register operation (LGW_SPI_SUCCESS/LGW_SPI_ERROR)
 */
-int lgw_spi_wb(void *com_target, uint8_t spi_mux_target, uint16_t address, const uint8_t *data, uint16_t size);
+//int lgw_spi_wb(void *com_target, uint8_t spi_mux_target, uint16_t address, const uint8_t *data, uint16_t size);
 
 /**
 @brief LoRa concentrator SPI burst (multiple-byte) read
@@ -101,7 +101,7 @@ int lgw_spi_wb(void *com_target, uint8_t spi_mux_target, uint16_t address, const
 @param size size of the transfer, in byte(s)
 @return status of register operation (LGW_SPI_SUCCESS/LGW_SPI_ERROR)
 */
-int lgw_spi_rb(void *com_target, uint8_t spi_mux_target, uint16_t address, uint8_t *data, uint16_t size);
+//int lgw_spi_rb(void *com_target, uint8_t spi_mux_target, uint16_t address, uint8_t *data, uint16_t size);
 
 /**
  *

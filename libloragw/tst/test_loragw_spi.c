@@ -55,25 +55,25 @@ int main()
     lgw_spi_open(&spi_target);
 
     /* normal R/W test */
-    for (i = 0; i < TIMING_REPEAT; ++i)
-        lgw_spi_w(spi_target, spi_mux_mode, LGW_SPI_MUX_TARGET_SX1301, 0xAA, 0x96);
-    for (i = 0; i < TIMING_REPEAT; ++i)
-        lgw_spi_r(spi_target, spi_mux_mode, LGW_SPI_MUX_TARGET_SX1301, 0x55, &data);
+    // for (i = 0; i < TIMING_REPEAT; ++i)
+    //     lgw_spi_w(spi_target, spi_mux_mode, LGW_SPI_MUX_TARGET_SX1301, 0xAA, 0x96);
+    // for (i = 0; i < TIMING_REPEAT; ++i)
+    //     lgw_spi_r(spi_target, spi_mux_mode, LGW_SPI_MUX_TARGET_SX1301, 0x55, &data);
 
     /* burst R/W test, small bursts << LGW_BURST_CHUNK */
-    for (i = 0; i < TIMING_REPEAT; ++i)
-        lgw_spi_wb(spi_target, spi_mux_mode, LGW_SPI_MUX_TARGET_SX1301, 0x55, dataout, 16);
-    for (i = 0; i < TIMING_REPEAT; ++i)
-        lgw_spi_rb(spi_target, spi_mux_mode, LGW_SPI_MUX_TARGET_SX1301, 0x55, datain, 16);
+    // for (i = 0; i < TIMING_REPEAT; ++i)
+    //     lgw_spi_wb(spi_target, spi_mux_mode, LGW_SPI_MUX_TARGET_SX1301, 0x55, dataout, 16);
+    // for (i = 0; i < TIMING_REPEAT; ++i)
+    //     lgw_spi_rb(spi_target, spi_mux_mode, LGW_SPI_MUX_TARGET_SX1301, 0x55, datain, 16);
 
     /* burst R/W test, large bursts >> LGW_BURST_CHUNK */
-    for (i = 0; i < TIMING_REPEAT; ++i)
-        lgw_spi_wb(spi_target, spi_mux_mode, LGW_SPI_MUX_TARGET_SX1301, 0x5A, dataout, ARRAY_SIZE(dataout));
-    for (i = 0; i < TIMING_REPEAT; ++i)
-        lgw_spi_rb(spi_target, spi_mux_mode, LGW_SPI_MUX_TARGET_SX1301, 0x5A, datain, ARRAY_SIZE(datain));
+    // for (i = 0; i < TIMING_REPEAT; ++i)
+    //     lgw_spi_wb(spi_target, spi_mux_mode, LGW_SPI_MUX_TARGET_SX1301, 0x5A, dataout, ARRAY_SIZE(dataout));
+    // for (i = 0; i < TIMING_REPEAT; ++i)
+    //     lgw_spi_rb(spi_target, spi_mux_mode, LGW_SPI_MUX_TARGET_SX1301, 0x5A, datain, ARRAY_SIZE(datain));
 
     /* last read (blocking), just to be sure no to quit before the FTDI buffer is flushed */
-    lgw_spi_r(spi_target, spi_mux_mode, LGW_SPI_MUX_TARGET_SX1301, 0x55, &data);
+    //lgw_spi_r(spi_target, spi_mux_mode, LGW_SPI_MUX_TARGET_SX1301, 0x55, &data);
     printf("data received (simple read): %d\n",data);
 
     lgw_spi_close(spi_target);

@@ -141,7 +141,7 @@ int lgw_com_w(uint8_t spi_mux_target, uint16_t address, uint8_t data) {
 
     switch (_lgw_com_type) {
         case LGW_COM_SPI:
-            com_stat = lgw_spi_w(_lgw_com_target, spi_mux_target, address, data);
+            com_stat = 0;//lgw_spi_w(_lgw_com_target, spi_mux_target, address, data);
             break;
         case LGW_COM_USB:
             com_stat = lgw_usb_w(_lgw_com_target, spi_mux_target, address, data);
@@ -175,7 +175,7 @@ int lgw_com_r(uint8_t spi_mux_target, uint16_t address, uint8_t *data) {
 
     switch (_lgw_com_type) {
         case LGW_COM_SPI:
-            com_stat = lgw_spi_r(_lgw_com_target, spi_mux_target, address, data);
+            com_stat = 0;//lgw_spi_r(_lgw_com_target, spi_mux_target, address, data);
             break;
         case LGW_COM_USB:
             com_stat = lgw_usb_r(_lgw_com_target, spi_mux_target, address, data);
@@ -241,7 +241,7 @@ int lgw_com_wb(uint8_t spi_mux_target, uint16_t address, const uint8_t *data, ui
 
     switch (_lgw_com_type) {
         case LGW_COM_SPI:
-            com_stat = lgw_spi_wb(_lgw_com_target, spi_mux_target, address, data, size);
+            com_stat = 0;//lgw_spi_wb(_lgw_com_target, spi_mux_target, address, data, size);
             break;
         case LGW_COM_USB:
             com_stat = lgw_usb_wb(_lgw_com_target, spi_mux_target, address, data, size);
@@ -275,7 +275,7 @@ int lgw_com_rb(uint8_t spi_mux_target, uint16_t address, uint8_t *data, uint16_t
 
     switch (_lgw_com_type) {
         case LGW_COM_SPI:
-            com_stat = lgw_spi_rb(_lgw_com_target, spi_mux_target, address, data, size);
+            com_stat = 0;//lgw_spi_rb(_lgw_com_target, spi_mux_target, address, data, size);
             break;
         case LGW_COM_USB:
             com_stat = lgw_usb_rb(_lgw_com_target, spi_mux_target, address, data, size);
