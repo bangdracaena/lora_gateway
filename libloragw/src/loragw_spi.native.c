@@ -57,77 +57,77 @@ Maintainer: Sylvain Miermont
 /* --- PUBLIC FUNCTIONS DEFINITION ------------------------------------------ */
 
 /* SPI initialization and configuration */
-int lgw_spi_open(void **spi_target_ptr) {
-    int *spi_device = NULL;
-    int dev;
-    int a=0, b=0;
-    int i;
+// int lgw_spi_open(void **spi_target_ptr) {
+//     int *spi_device = NULL;
+//     int dev;
+//     int a=0, b=0;
+//     int i;
 
-    /* check input variables */
-    CHECK_NULL(spi_target_ptr); /* cannot be null, must point on a void pointer (*spi_target_ptr can be null) */
+//     /* check input variables */
+//     CHECK_NULL(spi_target_ptr); /* cannot be null, must point on a void pointer (*spi_target_ptr can be null) */
 
-    /* allocate memory for the device descriptor */
-    spi_device = malloc(sizeof(int));
-    if (spi_device == NULL) {
-        DEBUG_MSG("ERROR: MALLOC FAIL\n");
-        return LGW_SPI_ERROR;
-    }
+//     /* allocate memory for the device descriptor */
+//     spi_device = malloc(sizeof(int));
+//     if (spi_device == NULL) {
+//         DEBUG_MSG("ERROR: MALLOC FAIL\n");
+//         return LGW_SPI_ERROR;
+//     }
 
-    /* open SPI device */
-    dev = open(SPI_DEV_PATH, O_RDWR);
-    if (dev < 0) {
-        DEBUG_PRINTF("ERROR: failed to open SPI device %s\n", SPI_DEV_PATH);
-        return LGW_SPI_ERROR;
-    }
+//     /* open SPI device */
+//     dev = open(SPI_DEV_PATH, O_RDWR);
+//     if (dev < 0) {
+//         DEBUG_PRINTF("ERROR: failed to open SPI device %s\n", SPI_DEV_PATH);
+//         return LGW_SPI_ERROR;
+//     }
 
-    /* setting SPI mode to 'mode 0' */
-    i = SPI_MODE_0;
-    a = ioctl(dev, SPI_IOC_WR_MODE, &i);
-    b = ioctl(dev, SPI_IOC_RD_MODE, &i);
-    if ((a < 0) || (b < 0)) {
-        DEBUG_MSG("ERROR: SPI PORT FAIL TO SET IN MODE 0\n");
-        close(dev);
-        free(spi_device);
-        return LGW_SPI_ERROR;
-    }
+//     /* setting SPI mode to 'mode 0' */
+//     i = SPI_MODE_0;
+//     a = ioctl(dev, SPI_IOC_WR_MODE, &i);
+//     b = ioctl(dev, SPI_IOC_RD_MODE, &i);
+//     if ((a < 0) || (b < 0)) {
+//         DEBUG_MSG("ERROR: SPI PORT FAIL TO SET IN MODE 0\n");
+//         close(dev);
+//         free(spi_device);
+//         return LGW_SPI_ERROR;
+//     }
 
-    /* setting SPI max clk (in Hz) */
-    i = SPI_SPEED;
-    a = ioctl(dev, SPI_IOC_WR_MAX_SPEED_HZ, &i);
-    b = ioctl(dev, SPI_IOC_RD_MAX_SPEED_HZ, &i);
-    if ((a < 0) || (b < 0)) {
-        DEBUG_MSG("ERROR: SPI PORT FAIL TO SET MAX SPEED\n");
-        close(dev);
-        free(spi_device);
-        return LGW_SPI_ERROR;
-    }
+//     /* setting SPI max clk (in Hz) */
+//     i = SPI_SPEED;
+//     a = ioctl(dev, SPI_IOC_WR_MAX_SPEED_HZ, &i);
+//     b = ioctl(dev, SPI_IOC_RD_MAX_SPEED_HZ, &i);
+//     if ((a < 0) || (b < 0)) {
+//         DEBUG_MSG("ERROR: SPI PORT FAIL TO SET MAX SPEED\n");
+//         close(dev);
+//         free(spi_device);
+//         return LGW_SPI_ERROR;
+//     }
 
-    /* setting SPI to MSB first */
-    i = 0;
-    a = ioctl(dev, SPI_IOC_WR_LSB_FIRST, &i);
-    b = ioctl(dev, SPI_IOC_RD_LSB_FIRST, &i);
-    if ((a < 0) || (b < 0)) {
-        DEBUG_MSG("ERROR: SPI PORT FAIL TO SET MSB FIRST\n");
-        close(dev);
-        free(spi_device);
-        return LGW_SPI_ERROR;
-    }
+//     /* setting SPI to MSB first */
+//     i = 0;
+//     a = ioctl(dev, SPI_IOC_WR_LSB_FIRST, &i);
+//     b = ioctl(dev, SPI_IOC_RD_LSB_FIRST, &i);
+//     if ((a < 0) || (b < 0)) {
+//         DEBUG_MSG("ERROR: SPI PORT FAIL TO SET MSB FIRST\n");
+//         close(dev);
+//         free(spi_device);
+//         return LGW_SPI_ERROR;
+//     }
 
-    /* setting SPI to 8 bits per word */
-    i = 0;
-    a = ioctl(dev, SPI_IOC_WR_BITS_PER_WORD, &i);
-    b = ioctl(dev, SPI_IOC_RD_BITS_PER_WORD, &i);
-    if ((a < 0) || (b < 0)) {
-        DEBUG_MSG("ERROR: SPI PORT FAIL TO SET 8 BITS-PER-WORD\n");
-        close(dev);
-        return LGW_SPI_ERROR;
-    }
+//     /* setting SPI to 8 bits per word */
+//     i = 0;
+//     a = ioctl(dev, SPI_IOC_WR_BITS_PER_WORD, &i);
+//     b = ioctl(dev, SPI_IOC_RD_BITS_PER_WORD, &i);
+//     if ((a < 0) || (b < 0)) {
+//         DEBUG_MSG("ERROR: SPI PORT FAIL TO SET 8 BITS-PER-WORD\n");
+//         close(dev);
+//         return LGW_SPI_ERROR;
+//     }
 
-    *spi_device = dev;
-    *spi_target_ptr = (void *)spi_device;
-    DEBUG_MSG("Note: SPI port opened and configured ok\n");
-    return LGW_SPI_SUCCESS;
-}
+//     *spi_device = dev;
+//     *spi_target_ptr = (void *)spi_device;
+//     DEBUG_MSG("Note: SPI port opened and configured ok\n");
+//     return LGW_SPI_SUCCESS;
+// }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -201,48 +201,48 @@ int lgw_spi_close(void *spi_target) {
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 /* Simple read */
-int lgw_spi_r(void *spi_target, uint8_t spi_mux_mode, uint8_t spi_mux_target, uint8_t address, uint8_t *data) {
-    int spi_device;
-    uint8_t out_buf[3];
-    uint8_t command_size;
-    uint8_t in_buf[ARRAY_SIZE(out_buf)];
-    struct spi_ioc_transfer k;
-    int a;
+// int lgw_spi_r(void *spi_target, uint8_t spi_mux_mode, uint8_t spi_mux_target, uint8_t address, uint8_t *data) {
+//     int spi_device;
+//     uint8_t out_buf[3];
+//     uint8_t command_size;
+//     uint8_t in_buf[ARRAY_SIZE(out_buf)];
+//     struct spi_ioc_transfer k;
+//     int a;
 
-    /* check input variables */
-    CHECK_NULL(spi_target);
-    if ((address & 0x80) != 0) {
-        DEBUG_MSG("WARNING: SPI address > 127\n");
-    }
-    CHECK_NULL(data);
+//     /* check input variables */
+//     CHECK_NULL(spi_target);
+//     if ((address & 0x80) != 0) {
+//         DEBUG_MSG("WARNING: SPI address > 127\n");
+//     }
+//     CHECK_NULL(data);
 
-    spi_device = *(int *)spi_target; /* must check that spi_target is not null beforehand */
+//     spi_device = *(int *)spi_target; /* must check that spi_target is not null beforehand */
 
-    /* prepare frame to be sent */
+//     /* prepare frame to be sent */
 
-        out_buf[0] = READ_ACCESS | (address & 0x7F);
-        out_buf[1] = 0x00;
-        command_size = 2;
+//         out_buf[0] = READ_ACCESS | (address & 0x7F);
+//         out_buf[1] = 0x00;
+//         command_size = 2;
     
 
-    /* I/O transaction */
-    memset(&k, 0, sizeof(k)); /* clear k */
-    k.tx_buf = (unsigned long) out_buf;
-    k.rx_buf = (unsigned long) in_buf;
-    k.len = command_size;
-    k.cs_change = 0;
-    a = ioctl(spi_device, SPI_IOC_MESSAGE(1), &k);
+//     /* I/O transaction */
+//     memset(&k, 0, sizeof(k)); /* clear k */
+//     k.tx_buf = (unsigned long) out_buf;
+//     k.rx_buf = (unsigned long) in_buf;
+//     k.len = command_size;
+//     k.cs_change = 0;
+//     a = ioctl(spi_device, SPI_IOC_MESSAGE(1), &k);
 
-    /* determine return code */
-    if (a != (int)k.len) {
-        DEBUG_MSG("ERROR: SPI READ FAILURE\n");
-        return LGW_SPI_ERROR;
-    } else {
-        DEBUG_MSG("Note: SPI read success\n");
-        *data = in_buf[command_size - 1];
-        return LGW_SPI_SUCCESS;
-    }
-}
+//     /* determine return code */
+//     if (a != (int)k.len) {
+//         DEBUG_MSG("ERROR: SPI READ FAILURE\n");
+//         return LGW_SPI_ERROR;
+//     } else {
+//         DEBUG_MSG("Note: SPI read success\n");
+//         *data = in_buf[command_size - 1];
+//         return LGW_SPI_SUCCESS;
+//     }
+// }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
